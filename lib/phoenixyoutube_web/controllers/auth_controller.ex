@@ -12,6 +12,12 @@ defmodule PhoenixyoutubeWeb.AuthController do
     create(conn, changeset)
   end
 
+  def delete(conn, _params) do
+    conn
+    |> configure_session(drop: true)
+    |> redirect(to: page_path(conn, :index))
+  end
+
   def create(conn, changeset) do
     case insert_or_update_user(changeset) do
       {:ok, user} ->
