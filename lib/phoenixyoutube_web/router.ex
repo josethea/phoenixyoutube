@@ -19,6 +19,13 @@ defmodule PhoenixyoutubeWeb.Router do
     get "/", PageController, :index
   end
 
+  scope "/auth", PhoenixyoutubeWeb do
+    pipe_through :browser
+    
+    get "/:provider", AuthController, :request
+    get "/:provider/callback", AuthController, :new
+  end
+
   # Other scopes may use custom stacks.
   # scope "/api", PhoenixyoutubeWeb do
   #   pipe_through :api
