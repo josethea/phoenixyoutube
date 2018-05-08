@@ -1,6 +1,8 @@
 defmodule Phoenixyoutube.User do
   use Ecto.Schema
   import Ecto.Changeset
+  alias Phoenixyoutube.User
+  alias Phoenixyoutube.Videos.Video
 
 
   schema "users" do
@@ -9,6 +11,7 @@ defmodule Phoenixyoutube.User do
     field :last_name, :string
     field :provider, :string
     field :token, :string
+    has_many :videos, Video
 
     timestamps()
   end
